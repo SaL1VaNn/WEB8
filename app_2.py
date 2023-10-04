@@ -37,7 +37,7 @@ if __name__ == '__main__':
                     result = Quotes(tags=quote['tags'], author=quote['author'],
                                     quotes=quote['quote'])
                     result.save()
-            print ('vse ok')     
+            print ('all ok')     
 
        elif menu == "1":
            name =  input('author: ') 
