@@ -7,23 +7,14 @@ from mongoengine import *
 from prod import main2, maker_contacts
 from consumer import channel
 
-uri = "mongodb+srv://topsya1986:topsya1986@cluster0.jyxrtyu.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
+uri = "mongodb+srv://nedwarov:<password>@cluster0.ti0rbne.mongodb.net/"
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client.homework8
 
-# db='homework8' 
-# connect(
-#     db ,
-#     host='mongodb+srv://topsya1986:topsya1986@cluster0.jyxrtyu.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp',
-#     )
 
-# client = MongoClient("mongodb://localhost:27017")
-# db = client.homework8
  
 if __name__ == '__main__':
-    #  for i in db.authors.find():
-    #   print (i)
      while  True:
        a= 'enter "4" for start RabbitMQ (id contakt) send to emeil'
        b= 'enter "3" start generate contacts for db '
@@ -51,9 +42,7 @@ if __name__ == '__main__':
        elif menu == "1":
            name =  input('author: ') 
            for i in db.authors.find({'fullname':  f"{name}" }, { '_id':1,'description': 1, 'author': 1}):
-                 print (i)
-        #    for name  in db.autors.find( {fullname:  f"{fullname}" }):
-        #       print(name)      
+                 print (i)    
        elif menu == '2' : 
             tags = input('enter tags no spaces separated by commas : ')  
             for i in db.quotes.find( {'tags': f'{tags}'}, {'tags': 1, 'quotes': 1},):
