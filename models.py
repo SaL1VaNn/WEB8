@@ -1,15 +1,35 @@
-from mongoengine import Document, StringField, ListField, ReferenceField, connect
+from mongoengine import *
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi 
+
+# uri = "mongodb+srv://topsya1986:topsya1986@cluster0.jyxrtyu.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
+# client = MongoClient(uri, server_api=ServerApi('1'))
+# db = client.homework8
+
+connect(
+    db='homework8',
+    host='mongodb+srv://topsya1986:topsya1986@cluster0.jyxrtyu.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp',
+    )
 
 
-connect('Sali', host='mongodb+srv://nedwarov:hetshot53@cluster0.ti0rbne.mongodb.net/<dbname>')
+ 
 
-class Author(Document):
-    name = StringField(required=True)
-    birth_date = StringField()
-    birth_place = StringField()
-    biography = StringField()
+class Authors(Document):
+    fullname = StringField()
+    born_date = StringField( )
+    born_location = StringField( )
+    description = StringField( )
 
-class Quote(Document):
-    text = StringField(required=True)
-    tags = ListField(StringField())
-    author = ReferenceField(Author)
+
+class Quotes(Document):
+    tags = ListField( )
+    author =  ReferenceField (Authors)
+    quotes = StringField ( )
+    
+class Contact(Document):
+    fullname = StringField()
+    email = EmailField()
+    done = BooleanField(default=False)
+
+
+      
